@@ -64,7 +64,7 @@ public class DynamicProgramingPackageOptimizerServiceImpl implements PackageOpti
                 // Complexity is O(2^n) where n is the number of items included in the package
                 for (x = 1; x <= totalNumberOfItems; x++) {
                     if (itemValue == values[x - 1]) {
-                        itemToInclude = itemWeight >= weights[x - 1] ? x : i;
+                        itemToInclude = itemWeight >= weights[x - 1] && !result.contains(x) ? x : i;
                     }
                 }
                 result.add(itemToInclude);

@@ -30,6 +30,12 @@ public class DynamicProgramingPackageOptimizerServiceImplTest {
     }
 
     @Test
+    public void resolve_same_values_different_weight_choose_less_weight_do_not_select_same_value_twice() {
+        List<Integer> result = dynamicProgramingPackageOptimizerService.resolve(15, new Integer[]{12, 2, 1, 1, 4}, new Integer[]{4, 2, 1, 2, 10}, 5);
+        assertThat(result.containsAll(Arrays.asList(5,4,3,2))).isTrue();
+    }
+
+    @Test
     public void resolve_no_solution() {
         List<Integer> result = dynamicProgramingPackageOptimizerService.resolve(1, new Integer[]{10}, new Integer[]{60}, 1);
         assertThat(result.isEmpty()).isTrue();
